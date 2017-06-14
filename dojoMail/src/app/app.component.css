@@ -1,0 +1,15 @@
+#big_wrapper {
+    text-align:center;
+}
+
+table {
+    font-size: 8px;
+}
+
+td {
+    text-align: left;
+}
+
+table, th, td {
+   border: 1px solid black;
+}
