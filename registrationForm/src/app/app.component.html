@@ -1,0 +1,113 @@
+<!--The whole content below can be removed with the new code.-->
+<div id = "big_wrapper">
+  <!--<h5>
+    Registration
+  </h5>-->
+  <div id="form_area">
+    <form (submit)="onSubmit(regForm)" #regForm="ngForm">
+      <!--Form Element 1-->
+      <p class="form_group">*First Name: <input type="text" name="first_name" required minlength="3" [(ngModel)]="user.first_name" #first_name="ngModel"/></p>
+      <!--Error Message 1-->
+      <div *ngIf="first_name.errors && (first_name.touched || regForm.submitted)">
+        <p *ngIf="first_name.errors.required" class='red'>First Name Required</p>
+        <p *ngIf="first_name.errors.minlength" class='red'>First Name Must Be At Least 3 Characters</p>
+      </div>
+      <!--Form Element 2-->
+      <p class="form_group">*Last Name: <input type="text" name="last_name" required minlength="3" [(ngModel)]="user.last_name" #last_name="ngModel"/></p>
+      <!--Error Message 2-->
+      <div *ngIf="last_name.errors && (last_name.touched || regForm.submitted)">
+        <p *ngIf="last_name.errors.required" class='red'>Last Name Required</p>
+        <p *ngIf="last_name.errors.minlength" class='red'>Last Name Must Be At Least 3 Characters</p>
+      </div>
+      <!--Form Element 3-->
+      <p class="form_group">*Email: <input type="text" name="email" required pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" [(ngModel)]="user.email" #email="ngModel"/></p>
+      <!--Error Message 3-->
+      <div *ngIf="email.errors && (email.touched || regForm.submitted)">
+        <p *ngIf="email.errors.required" class='red'>Email Required</p>
+        <p *ngIf="email.errors.pattern" class='red'>Invalid Email Structure</p>
+      </div>
+      <!--Form Element 4-->
+      <p class="form_group">*Password: <input type="password" name="password" required minlength="8" [(ngModel)]="user.password" #password="ngModel"/></p>
+      <!--Error Message 4-->
+      <div *ngIf="password.errors && (password.touched || regForm.submitted)">
+        <p *ngIf="password.errors.required" class='red'>Password Required</p>
+        <p *ngIf="password.errors.minlength" class='red'>Password Must Be At Least 8 Characters</p>
+      </div>
+      <!--Form Element 5-->
+      <p class="form_group">*Password Confirmation: <input type="password" name="password_confirm" [(ngModel)]="user.password_confirm" #password_confirm="ngModel"/></p>
+      <!--Error Message 5-->
+      <div *ngIf="user.password != user.password_confirm && (password_confirm.touched || regForm.submitted)">
+        <p class='red'>PW Confirm Not Match PW</p>
+      </div>
+      <!--Form Element 6-->
+      <p class="form_group">*Street Address: <input type="text" name="address" required [(ngModel)]="user.address" #address="ngModel"/></p>
+      <!--Error Message 6-->
+      <div *ngIf="address.errors && (address.touched || regForm.submitted)">
+        <p *ngIf="address.errors.required" class='red'>Address Required</p>
+      </div>
+      <!--Form Element 7-->
+      <p class="form_group">Unit/Apt #: <input type="text" name="unit" [(ngModel)]="user.unit" #unit="ngModel"/></p>
+      <!--Error Message 7-->
+      <!--NO VALIDATIONS FOR UNIT, SO NO ERRORS -->
+      <!--Form Element 8-->
+      <p class="form_group">*City: <input type="text" name="city" required [(ngModel)]="user.city" #city="ngModel"/></p>
+      <!--Error Message 8-->
+      <div *ngIf="city.errors && (city.touched || regForm.submitted)">
+        <p *ngIf="city.errors.required" class='red'>City Required</p>
+      </div>
+      <!--Form Element 9-->
+      <p class="form_group">*State: <select name="state" required [(ngModel)]="user.state" #state="ngModel">
+        <option value="CA">CA</option>
+        <option value="WA">WA</option>
+        <option value="TX">TX</option>
+      </select></p>
+      <!--Error Message 9-->
+      <div *ngIf="state.errors && (state.touched || regForm.submitted)">
+        <p *ngIf="state.errors.required" class='red'>State Required</p>
+      </div>
+      <!--Form Element 10-->
+      <p class="form_group">*I'm feeling lucky: <input type="radio" name="lucky" value="true" [(ngModel)]="user.lucky"/>You know it!
+        <input type="radio" name="lucky" value="false" [(ngModel)]="user.lucky"/>Not today.</p>
+      <!--Error Message 10-->
+      <!--NO VALIDATIONS FOR UNIT, SO NO ERRORS -->
+      <!--Submit button for form-->
+      <input [disabled]="!regForm.valid || user.password != user.password_confirm" type="submit" value="Submit User"/>
+    </form>
+  </div> <!-- end form_area -->
+
+  <div id="user_box">
+    <h3>User (in form):</h3>
+    {{ user.first_name }} <br>
+    {{ user.last_name }} <br>
+    {{ user.email }} <br>
+    {{ user.password }} <br>
+    {{ user.password_confirm }} <br>
+    {{ user.address }} <br>
+    {{ user.unit }} <br>
+    {{ user.city }} <br>
+    {{ user.state }} <br>
+    {{ user.lucky }}
+  </div>
+
+  <div id="users">
+    <h3>Users (array, all):</h3>
+    <p *ngFor="let user of users">
+      {{ user.first_name }} <br>
+      {{ user.last_name }} <br>
+      {{ user.email }} <br>
+      {{ user.password }} <br>
+      {{ user.password_confirm }} <br>
+      {{ user.address }} <br>
+      {{ user.unit }} <br>
+      {{ user.city }} <br>
+      {{ user.state }} <br>
+      {{ user.lucky }} <br>
+      --------------------- <br>
+    </p>
+  </div>
+
+
+
+</div> <!-- End big_wrapper -->
+
+

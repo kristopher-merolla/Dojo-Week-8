@@ -1,0 +1,37 @@
+#big_wrapper {
+    text-align: left;
+    margin: 0px auto;
+}
+
+.red {
+    color: red;
+    font-size: 6px;
+}
+
+#form_area {
+    font-size: 8px;
+    border: 1px solid black;
+    width: 30%;
+    height: auto;
+    text-align: right;
+    padding-right: 20px;
+    display: inline-block;
+}
+
+#user_box {
+    border: 2px solid green;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 8px;
+    min-width: 100px;
+    padding: 12px 20px 20px 20px;
+}
+
+#users {
+    border: 2px solid purple;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 8px;
+    min-width: 100px;
+    padding: 12px 20px 20px 20px;
+}
