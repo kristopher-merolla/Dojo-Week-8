@@ -1,0 +1,7 @@
+#big_wrapper {
+    border: 2px solid red;
+    padding: 20px;
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+}
