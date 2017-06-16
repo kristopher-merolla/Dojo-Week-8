@@ -1,0 +1,17 @@
+<p>
+  weather works! {{ weatherData | json }}
+</p>
+
+<form (submit)="getUserZipInfo(zip.value)">
+  <label for="zip">Zipcode:</label>
+  <input type="text" name="zip" #zip>
+  <button type="submit">Submit zipcode</button>
+</form>
+
+<div *ngIf="weatherData">
+  <a [routerLink]="['wind',weatherData.wind.speed]">Wind</a>
+  <a>Temp</a>
+  <a>Sky</a>
+</div>
+
+<router-outlet></router-outlet>

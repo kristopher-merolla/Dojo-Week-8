@@ -1,0 +1,9 @@
+<div id="big_wrapper">
+<p>
+  Super Saiyan 3 Level: {{ showPower }}
+</p>
+
+<div *ngIf="showPower>9000 && showPower<=20000">Over 9000!</div>
+<div *ngIf="showPower>20000 && showPower<50000">Superlative!</div>
+
+</div>

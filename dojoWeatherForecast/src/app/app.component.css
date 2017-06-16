@@ -1,0 +1,21 @@
+#big_wrapper {
+    border: 2px solid red;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.weather_link {
+    font-size: 8px;
+    display: inline-block;
+    border-right: 1px solid black;
+    padding-right: 4px;
+}
+
+#weather_link_rightmost {
+    font-size: 8px;
+    display: inline-block;
+}
+
+#linkbar {
+    padding-bottom: 20px;
+}

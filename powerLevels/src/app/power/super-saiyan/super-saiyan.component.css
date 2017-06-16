@@ -1,0 +1,7 @@
+#big_wrapper {
+    margin: 0px auto;
+    border: 1px solid purple;
+    width: 200px;
+    height: 75px;
+    display: inline-block;
+}

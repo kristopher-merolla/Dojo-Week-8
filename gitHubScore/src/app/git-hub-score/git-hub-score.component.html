@@ -1,0 +1,19 @@
+<div id="big_wrapper">
+
+  <h1>GitHub Score</h1>
+
+  <div id="score_generator">
+    <form (submit)="getTasks()">
+      <p style="font-size: 12px;">
+        GitHub Username: <input type="text" name="username" [(ngModel)]="username" />
+        <br><br>
+        <input type="submit" value="Calculate my GitHub Score" />
+      </p>
+    </form>
+  </div>
+
+  <div id="scoreboard">
+    <h3>Your Score: {{ score }}</h3>
+  </div>
+
+</div>

@@ -1,0 +1,19 @@
+
+<div id="big_wrapper">
+  <h1>
+    Dojo Weather Forecast
+  </h1>
+
+<!-- navigtion links can go here -->
+  <div id="linkbar">
+    <div class="weather_link"><a name="wlink" id="truck" routerLink="seattle" (click)="linkClick()">Seattle WA</a></div>
+    <div class="weather_link"><a name="Seattle" routerLink="sanjose" >San Jose CA</a></div>
+    <div class="weather_link"><a name="Seattle" routerLink="burbank" >Burbank CA</a></div>
+    <div class="weather_link"><a name="Seattle" routerLink="dallas" >Dallas TX</a></div>
+    <div class="weather_link"><a name="Seattle" routerLink="dc" >Washington DC</a></div>
+    <div id="weather_link_rightmost"><a name="Seattle" routerLink="chicago" >Chicago IL</a></div>
+  </div>
+
+<!-- partial views will load inside the router-outlet tag below -->
+<router-outlet></router-outlet> <!-- needed for routing! -->
+</div>

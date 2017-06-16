@@ -1,0 +1,23 @@
+#big_wrapper {
+    border: 1px solid blue;
+    width: 520px;
+    margin: auto;
+}
+
+#score_generator {
+    border: 1px solid purple;
+    width: 250px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+
+#scoreboard {
+    border: 1px solid purple;
+    width: 250px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
