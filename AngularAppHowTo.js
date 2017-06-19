@@ -138,6 +138,21 @@
 //////////////
 // 6) Forms //
 //////////////
+	// To use forms, you'll need to import it!:
+		app.module.ts
+			import { FormsModule } from '@angular/forms';
+			// need to add to the imports list as well:
+				// before:
+					imports: [
+						BrowserModule,
+						AppRoutingModule
+					]
+				// after:
+					imports: [
+						BrowserModule,
+						AppRoutingModule,
+						FormsModule // add FormsModule here
+					]
 	// Add a form into your sheet
 		main.component.html
 			//<form>
@@ -213,14 +228,16 @@
 					// before:
 						imports: [
 							BrowserModule,
+							FormsModule,
 							AppRoutingModule
-						],
+						]
 					// after:
 						imports: [
 							BrowserModule,
+							FormsModule,
 							AppRoutingModule, 
 							HttpModule // add HttpModule here
-						],
+						]
 				// HttpService to providers list
 					// before:
 						providers: [],

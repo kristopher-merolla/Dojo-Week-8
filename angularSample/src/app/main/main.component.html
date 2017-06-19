@@ -1,0 +1,15 @@
+<div id="big_wrapper">
+  <p>
+    Main Component {{ weatherData | json }}
+  </p>
+
+  <form (submit)="getUserZipInfo(zip.value)">
+    <label for="zip">Zipcode:</label>
+    <input type="number" name="zip" #zip>
+    <button type="submit">Submit zipcode</button>
+  </form>
+
+
+  <router-outlet></router-outlet>
+
+</div>
