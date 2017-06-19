@@ -47,10 +47,10 @@
 						main.component.css // component css file (to style that component's html file!)
 						main.component.html // component html file
 						main.component.ts
-					ComponentName2/
-						ComponentName2.component.css
-						ComponentName2.component.html
-						ComponentName2.component.ts
+					child/
+						child.component.css
+						child.component.html
+						child.component.ts
 					app-routing.module.ts
 					app.component.css // app css file (to style that app's html file!)
 					app.component.ts
@@ -95,14 +95,14 @@
 					//	border: 1px solid blue;
 					//}
 	// you can also imbed a component inside another (parent-child relationship)
-		ComponentName2.component.html
+		child.component.html
 			//<div id="big_wrapper">
 			//	<p>
 			//		child works!
-			//		<app-ComponentName2></app-ComponentName2>
+			//		<app-child></app-child>
 			//	</p>
 			//</div>
-		ComponentName1.component.css
+		child.component.css
 			//#big_wrapper {
 			//	border: 1px solid green;
 			//}
@@ -117,23 +117,21 @@
 			// you'll see the paths defined and can add to them:
 				const routes: Routes = [
 					{
-						path: 'main', // add your path here
+						path: 'weather', // add your path here
 						component: main,
 						children: [
-							{ path: 'child', component: ComponentName2} // path "main/child"
+							{ path: 'wind/:wind', component: child} // path "main/child"
 						]
 					}
 				];
 			// to use these components, you guessed it, you need to add an import in your file:
 				import { mainComponent } from './main/main.component';
-				import { ComponentName2Component } from './ComponentName2/ComponentName2.component';
+				import { childComponent } from './child/child.component';
 	// add a line to the component.ts file:
 		main.component.ts
 			import { Router, ActivatedRoute } from '@angular/router';
 	// routes are now setup, take a look at these routes on the browser:
-		"http://localhost:4200/"
-		"http://localhost:4200/main"
-		"http://localhost:4200/child"
+		"http://localhost:4200/weather"
 
 //////////////
 // 6) Forms //
@@ -192,6 +190,7 @@
 ////////////////////////////////
 // 7) HTTP Service, API calls //
 ////////////////////////////////
+	// Example API call below goes to a openweathermap.org API
 	// using an http service we must import the service first
 		main.component.ts
 			import { HttpService } from './../http.service';
