@@ -8,7 +8,9 @@
 	// Below steps are an example, "AngularSample", "main", "child" are made up, otherwise commands are as-is
 	// navigate in terminal to directory where you want to save your project, enter:
 		ng new AngularSample --routing
-		// the "--routing" is be needed for app to use routes, if you do not then omit it
+			// When integrating with Express, call the application "public" and create inside express app
+				ng new public --routing
+			// the "--routing" is be needed for app to use routes, if you do not then omit it
 	// to create a component, cd into the AngularSample directory //
 		cd AngularSample
 		//enter:
@@ -160,7 +162,7 @@
 			//</form>
 	// To get the form to pass data, create a function (in component.ts file) to run when you submit:
 		main.component.ts
-		// the Http request will be either a success or fail, and we can catch these exceptions within:
+		// the Http request will be either a success or fail, and we can catch these errs (Do not put in constructor):
 			export class MainComponent implements OnInit { }
 				//weatherData: object;
 				//
@@ -199,7 +201,7 @@
 			// before: 
 				constructor() { }
 			// after:
-				after: constructor(private _http: Http) { }
+				after: constructor(private _http: HttpService) { }
 	// To use an API call, your app needs to utilize http we setup using "ng g service http"
 	// In step 6 above, the api call function we have called "fetchWeather()"
 		http.service.ts
@@ -243,7 +245,119 @@
 					// after:
 						providers: [HttpService], // add HttpService here
 
+////////////////////////////////
+// 8) Building an Express App //
+////////////////////////////////
+	// layout of express app:
+	my-express-app/
+		server/
+			config/
+				mongoose.js
+				routes.js
+			controllers/
+				products.js
+			models/
+				product.js
+		server.js
+	// make a directory for our express app:
+		mkdir my-express-app
+			// go into the directory:
+				cd my-express-app
+					// initialize the node app:
+						npm init -y
+							// install packagaes:
+								npm install --save express
+								npm install --save body-parser
+								npm install --save mongoose
+							// create server file:
+								touch server.js
+								mkdir server
+									// go into server folder:
+										cd server
+											// create directories:
+												mkdir config
+													// add files in config (cd into config first):
+														cd config
+															touch mongoose.js
+															touch routes.js
+															cd ..
+												mkdir controllers
+													// add files:
+														cd controllers
+															touch products.js
+															cd ..
+												mkdir models
+													// add files:
+														cd models
+															touch product.js
+															cd ..
+															cd .. // back inside my-express-app dir
 
+/////////////////////////////
+// 9) MongoDB and Mongoose //
+/////////////////////////////
+	// give collection names in LOWER CASE
+
+
+////////////////////////////////////
+// X) Express-Angular Integration //
+////////////////////////////////////
+	// First step towards integration is moving your angular app directory inside your express directory
+		// before:
+			my-express-app/
+				server/
+				server.js
+		// mid:
+			my-express-app/
+				my-angular-app/ // app directory goes here!  rename it to "public"
+				server/
+				server.js
+		// after:
+			my-express-app/
+				public/ // app directory
+				server/
+				server.js
+	// Within your angular directory, in the terminal enter:
+		ng build -w
+			// This will create a "dist" directory to hold the transpiled ts files as js
+			// The "-w" listens for saves, so when we update the app and save, the "dist" is updated
+			// When you are ready to deploy, run without the "-w" ie: "ng build"
+		// now the express app looks like (mins a few file omitted for space) this:
+			my-express-app/
+				public/
+					dist/ // this was added with the "ng build -w" command
+					e2e/
+					node_modules/
+					src/
+				server/
+				server.js
+	// Edit the server.js file to point to the "dist" directory as the static folder
+		server.js
+			app.use(express.static(path.join(__dirname, '/public/dist')));
+				// if you did not rename your angular app to "public" the above route would be different
+					// just use "public" for your angular app directory! :)
+			// you should also add a "catch all" route to your routes file
+				my-express-app/
+					server/
+						config/
+							mongoose.js
+							routes.js // add routes here
+				// the '/' route will automatically point to index.html, so don't need to add that:
+					routes.js
+						app.get('*', (req, res, next)=>{
+							res.sendFile(path.resolve("./public/dist/index.html")); // SYNTAX MAY NOT BE CORRECT FOR THIS LINE
+						});
+	// In your terminal in the express app directory (my-express-app) enter:
+		nodemon server.js
+			// this starts up our node server and keeps it running
+	// In a separate terminal window, enter:
+		sudo mongod
+			// this starts up our mongo database (assuming we're using that!)
+
+///////////////////
+// Y) Deployment //
+///////////////////
+	// Using AWS...
 
 
 
